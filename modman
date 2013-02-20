@@ -1,0 +1,5 @@
+# Ash_Sort Mappings
+
+Ash_Sort.xml          app/etc/modules/Ash_Sort.xml
+code                  app/code/local/Ash/Sort/
+locale/*              app/etc/locale/en_US/

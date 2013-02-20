@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This extension adds user selectable product sort direction and additional
+ * catalog sorting options to show products added most recently.
+ *
+ * @category    Ash
+ * @package     Ash_Sort
+ * @copyright   Copyright (c) 2011 August Ash, Inc. (http://www.augustash.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author      August Ash Team <core@augustash.com>
+ */
+-->
+<config>
+    <modules>
+        <Ash_Sort>
+            <version>1.0.1</version>
+        </Ash_Sort>
+    </modules>
+
+    <global>
+        <helpers>
+            <ash_sort>
+                <class>Ash_Sort_Helper</class>
+            </ash_sort>
+        </helpers>
+        <blocks>
+            <ash_sort>
+                <class>Ash_Sort_Block</class>
+            </ash_sort>
+            <catalog>
+                <rewrite>
+                    <!-- Override Mage_Catalog_Block_Product_List_Toolbar -->
+                    <product_list_toolbar>Ash_Sort_Block_Product_List_Toolbar</product_list_toolbar>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <ash_sort>
+                <class>Ash_Sort_Model</class>
+            </ash_sort>
+            <catalog>
+                <rewrite>
+                    <!-- Override Mage_Catalog_Model_Config -->
+                    <config>Ash_Sort_Model_Config</config>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+
+    <default>
+        <catalog>
+            <frontend>
+                <default_sort_by>entity_id</default_sort_by>
+                <default_sort_direction>desc</default_sort_direction>
+            </frontend>
+        </catalog>
+    </default>
+</config>

@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+// load module configuration
+$config = realpath(dirname(__FILE__) . '/code/etc/config.xml');
+$xml    = simplexml_load_file($config);
+
+// pull out name and version
+foreach ($xml->modules[0] as $name => $info) {
+    $extension = $name;
+    $version   = (string)$info->version;
+}
+
+// build extension
+$projectPath = getcwd();
+$buildPath   = "/tmp/ash/{$extension}-{$version}";
+$archiveName = strtolower("{$extension}-{$version}.zip");
+$latestName  = strtolower("{$extension}-latest.zip");
+shell_exec('mkdir -p ' . $buildPath);
+chdir($buildPath);
+shell_exec('modman init && modman link --copy ' . $projectPath);
+shell_exec("zip ~/Desktop/{$archiveName} -r ./* --exclude .modman");
+shell_exec("cp ~/Desktop/{$archiveName} ~/Desktop/$latestName");
+shell_exec('rm -rf ' . $buildPath);
