@@ -14,7 +14,9 @@
 <config>
     <modules>
         <Ash_Sort>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
+            <ashup
+                remote="https://s3.amazonaws.com/augustash/mage/ash_sort-latest.zip" />
         </Ash_Sort>
     </modules>
 
